@@ -1,0 +1,329 @@
+﻿<Window x:Class="GifCapture.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:p="clr-namespace:GifCapture.Properties"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
+        xmlns:vm="clr-namespace:GifCapture.ViewModels"
+        xmlns:converters="clr-namespace:GifCapture.Converters"
+        SizeToContent="WidthAndHeight"
+        UseLayoutRounding="True"
+        ResizeMode="CanMinimize"
+        Title="GifCapture"
+        Icon="../Assets/Images/logo.ico">
+  <Window.DataContext>
+    <vm:MainViewModel />
+  </Window.DataContext>
+  <Window.Resources>
+    <converters:NegatingConverter x:Key="NegatingConverter" />
+    <converters:VisibilityConverter x:Key="VisibilityConverter" />
+    <Style x:Key="ContextMenuStyle" TargetType="{x:Type ContextMenu}">
+      <Setter Property="SnapsToDevicePixels" Value="True" />
+      <Setter Property="OverridesDefaultStyle" Value="True" />
+      <Setter Property="Cursor" Value="Hand" />
+      <Setter Property="MinWidth" Value="170" />
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type ContextMenu}">
+            <Grid Background="Transparent">
+              <Border Margin="0,0,5,5" Background="White" BorderThickness="1" BorderBrush="LightGray">
+                <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" Margin="2" />
+                <Border.Effect>
+                  <DropShadowEffect BlurRadius="3" ShadowDepth="3" Color="Gray" Opacity="0.5" />
+                </Border.Effect>
+              </Border>
+            </Grid>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <Style x:Key="FocusVisual">
+      <Setter Property="Control.Template">
+        <Setter.Value>
+          <ControlTemplate>
+            <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true"
+                       StrokeThickness="1" />
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+
+    <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+      <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
+      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="BorderThickness" Value="0" />
+      <Setter Property="HorizontalContentAlignment" Value="Center" />
+      <Setter Property="VerticalContentAlignment" Value="Center" />
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type Button}">
+            <Border x:Name="border" CornerRadius="4 4 0 0" Padding="5" Background="{TemplateBinding Background}">
+              <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                RenderTransformOrigin="0.5,0.5">
+                <ContentPresenter.RenderTransform>
+                  <ScaleTransform CenterX="0.5" CenterY="0.5" />
+                </ContentPresenter.RenderTransform>
+              </ContentPresenter>
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background" TargetName="border" Value="#C1C1C1" />
+              </Trigger>
+              <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="Gray" />
+              </Trigger>
+
+              <EventTrigger RoutedEvent="Button.Click">
+                <EventTrigger.Actions>
+                  <BeginStoryboard>
+                    <Storyboard>
+                      <DoubleAnimation Storyboard.TargetName="contentPresenter"
+                                       Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                       From="1" To="0.6" Duration="0:0:0.1"
+                                       AutoReverse="True" />
+                      <DoubleAnimation Storyboard.TargetName="contentPresenter"
+                                       Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                       From="1" To="0.6" Duration="0:0:0.1"
+                                       AutoReverse="True" />
+                    </Storyboard>
+                  </BeginStoryboard>
+                </EventTrigger.Actions>
+              </EventTrigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <Style x:Key="ButtonStyle2" TargetType="{x:Type Button}">
+      <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
+      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="BorderThickness" Value="0" />
+      <Setter Property="HorizontalContentAlignment" Value="Center" />
+      <Setter Property="VerticalContentAlignment" Value="Center" />
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type Button}">
+            <Border x:Name="border" Padding="5" Background="{TemplateBinding Background}">
+              <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                RenderTransformOrigin="0.5,0.5">
+                <ContentPresenter.RenderTransform>
+                  <ScaleTransform CenterX="0.5" CenterY="0.5" />
+                </ContentPresenter.RenderTransform>
+              </ContentPresenter>
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" TargetName="border" Value="#C1C1C1" />
+              </Trigger>
+              <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="Gray" />
+              </Trigger>
+
+              <EventTrigger RoutedEvent="Button.Click">
+                <EventTrigger.Actions>
+                  <BeginStoryboard>
+                    <Storyboard>
+                      <DoubleAnimation Storyboard.TargetName="contentPresenter"
+                                       Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                       From="1" To="0.6" Duration="0:0:0.1"
+                                       AutoReverse="True" />
+                      <DoubleAnimation Storyboard.TargetName="contentPresenter"
+                                       Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                       From="1" To="0.6" Duration="0:0:0.1"
+                                       AutoReverse="True" />
+                    </Storyboard>
+                  </BeginStoryboard>
+                </EventTrigger.Actions>
+              </EventTrigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Window.Resources>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="0" />
+    </Grid.RowDefinitions>
+    <Border Grid.Row="0" BorderThickness="0" SnapsToDevicePixels="True" Background="White">
+      <StackPanel Orientation="Horizontal" Margin="10 10 10 0">
+        <Button Style="{StaticResource ButtonStyle1}"
+                Click="CaptureWindow_OnClick">
+          <Button.Content>
+            <StackPanel>
+              <Image Source="../Assets/Images/截取窗口.png" Width="40" />
+              <TextBlock Text="{x:Static p:Resources.CaptureWindow}" Foreground="#1E1C1C" Margin="0 5 0 0" />
+            </StackPanel>
+          </Button.Content>
+        </Button>
+        <Button Style="{StaticResource ButtonStyle1}" Margin="10 0"
+                Click="CaptureRegion_OnClick">
+          <Button.Content>
+            <StackPanel>
+              <Image Source="../Assets/Images/截取区域.png" Width="40" />
+              <TextBlock Text="{x:Static p:Resources.CaptureRegion}" Foreground="#1E1C1C" Margin="0 5 0 0" />
+            </StackPanel>
+          </Button.Content>
+        </Button>
+        <Button Style="{StaticResource ButtonStyle1}" Margin="0 0 5 0"
+                Click="CaptureScreen_OnClick">
+          <Button.Content>
+            <StackPanel>
+              <Image Source="../Assets/Images/截取屏幕.png" Width="40" />
+              <TextBlock Text="{x:Static p:Resources.CaptureScreen}" Foreground="#1E1C1C" Margin="0 5 0 0" />
+            </StackPanel>
+          </Button.Content>
+        </Button>
+
+        <Button Style="{StaticResource ButtonStyle1}" Margin="5 0 0 0"
+                Click="GifWindow_OnClick" IsEnabled="{Binding Recoding, Mode=OneWay, Converter={StaticResource NegatingConverter}}">
+          <Button.Content>
+            <StackPanel>
+              <Image Source="../Assets/Images/录制窗口.png" Width="40" />
+              <TextBlock Text="{x:Static p:Resources.RecordeWindow}" Foreground="#1E1C1C" Margin="0 5 0 0" />
+            </StackPanel>
+          </Button.Content>
+        </Button>
+        <Button Style="{StaticResource ButtonStyle1}" Margin="10 0"
+                Click="GifRegion_OnClick" IsEnabled="{Binding Recoding, Mode=OneWay, Converter={StaticResource NegatingConverter}}">
+          <Button.Content>
+            <StackPanel>
+              <Image Source="../Assets/Images/录制区域.png" Width="40" />
+              <TextBlock Text="{x:Static p:Resources.RecordeRegion}" Foreground="#1E1C1C" Margin="0 5 0 0" />
+            </StackPanel>
+          </Button.Content>
+        </Button>
+        <Button Style="{StaticResource ButtonStyle1}"
+                Click="GifScreen_OnClick" IsEnabled="{Binding Recoding, Mode=OneWay, Converter={StaticResource NegatingConverter}}">
+          <Button.Content>
+            <StackPanel>
+              <Image Source="../Assets/Images/录制屏幕.png" Width="40" />
+              <TextBlock Text="{x:Static p:Resources.RecordeScreen}" Foreground="#1E1C1C" Margin="0 5 0 0" />
+            </StackPanel>
+          </Button.Content>
+        </Button>
+      </StackPanel>
+    </Border>
+    <Border Grid.Row="1" Background="#EEEEEE" SnapsToDevicePixels="True"
+            BorderThickness="0 1 0 0"
+            BorderBrush="#B9B9B9"
+            Visibility="{Binding Recoding, Mode=OneWay, Converter={StaticResource VisibilityConverter}}">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Background="#EEEEEE" Style="{StaticResource ButtonStyle2}"
+                Click="StopRecord_OnClick"
+                IsEnabled="{Binding Recoding, Mode=OneWay}">
+          <Button.Content>
+            <StackPanel Orientation="Horizontal">
+              <Image Source="../Assets/Images/stop.png" Width="30" />
+              <TextBlock Foreground="#1E1C1C" Margin="5 0 0 0" VerticalAlignment="Center">
+                <TextBlock.Text>
+                  <MultiBinding StringFormat="{}{0} | {1}s">
+                    <Binding Source="{x:Static p:Resources.StopRecording}" Mode="OneWay" />
+                    <Binding Path="ElapsedSeconds" Mode="OneWay" />
+                  </MultiBinding>
+                </TextBlock.Text>
+              </TextBlock>
+            </StackPanel>
+          </Button.Content>
+        </Button>
+      </Grid>
+    </Border>
+    <Border Grid.Row="2" BorderBrush="#B9B9B9" BorderThickness="0 1 0 0" SnapsToDevicePixels="True"
+            Padding="10 2"
+            Background="#E9EBEC">
+      <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right">
+        Version <Hyperlink NavigateUri="https://github.com/chenjing1294/GifCapture" Click="GitHubHyperlink_OnClick">1.0.0</Hyperlink>,
+        Developed by
+        <Hyperlink NavigateUri="http://www.redisant.cn" Click="WebSiteHyperlink_OnClick">Redisant</Hyperlink>
+      </TextBlock>
+    </Border>
+    <tb:TaskbarIcon Grid.Row="3" IconSource="../Assets/Images/logo.ico"
+                    ToolTipText="GifCapture"
+                    MenuActivation="RightClick"
+                    TrayMouseDoubleClick="SystemTray_TrayMouseDoubleClick">
+      <tb:TaskbarIcon.ContextMenu>
+        <ContextMenu Style="{StaticResource ContextMenuStyle}">
+          <ContextMenu.Resources>
+            <!-- MenuItem style -->
+            <Style TargetType="{x:Type MenuItem}">
+              <Setter Property="SnapsToDevicePixels" Value="True" />
+              <Setter Property="OverridesDefaultStyle" Value="True" />
+              <Setter Property="Template">
+                <Setter.Value>
+                  <ControlTemplate TargetType="{x:Type MenuItem}">
+                    <Grid Name="Root" Height="27" Background="White">
+                      <ContentPresenter Name="HeaderHost" Margin="10,0,0,0"
+                                        ContentSource="Header"
+                                        RecognizesAccessKey="True"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        TextOptions.TextRenderingMode="ClearType"
+                                        TextOptions.TextFormattingMode="Display" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                      <Trigger Property="IsMouseOver" Value="True">
+                        <Setter TargetName="Root" Property="Background" Value="#91C9F7" />
+                      </Trigger>
+                      <Trigger Property="IsPressed" Value="True">
+                        <Setter TargetName="Root" Property="Background" Value="White" />
+                      </Trigger>
+                      <Trigger Property="IsEnabled" Value="False">
+                        <Setter Property="Foreground" Value="Gray" />
+                      </Trigger>
+                    </ControlTemplate.Triggers>
+                  </ControlTemplate>
+                </Setter.Value>
+              </Setter>
+            </Style>
+
+            <!-- ContextMenu separator style -->
+            <Style x:Key="MenuSeparatorStyle" TargetType="{x:Type Separator}">
+              <Setter Property="SnapsToDevicePixels" Value="True" />
+              <Setter Property="OverridesDefaultStyle" Value="True" />
+              <Setter Property="IsTabStop" Value="False" />
+              <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+              <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
+              <Setter Property="Background" Value="LightGray" />
+              <Setter Property="Height" Value="5" />
+              <Setter Property="Template">
+                <Setter.Value>
+                  <ControlTemplate TargetType="{x:Type Separator}">
+                    <Border Height="5" Margin="-2,2" VerticalAlignment="Center" Background="{TemplateBinding Background}" />
+                  </ControlTemplate>
+                </Setter.Value>
+              </Setter>
+            </Style>
+          </ContextMenu.Resources>
+          <MenuItem Header="{x:Static p:Resources.CaptureWindow}" Click="CaptureWindow_OnClick" />
+          <MenuItem Header="{x:Static p:Resources.CaptureRegion}" Click="CaptureRegion_OnClick" />
+          <MenuItem Header="{x:Static p:Resources.CaptureScreen}" Click="CaptureScreen_OnClick" />
+
+          <Separator Style="{StaticResource MenuSeparatorStyle}" />
+
+          <MenuItem Header="{x:Static p:Resources.RecordeWindow}" Click="GifWindow_OnClick"
+                    IsEnabled="{Binding Recoding, Mode=OneWay, Converter={StaticResource NegatingConverter}}" />
+          <MenuItem Header="{x:Static p:Resources.RecordeRegion}" Click="GifRegion_OnClick"
+                    IsEnabled="{Binding Recoding, Mode=OneWay, Converter={StaticResource NegatingConverter}}" />
+          <MenuItem Header="{x:Static p:Resources.RecordeScreen}" Click="GifScreen_OnClick"
+                    IsEnabled="{Binding Recoding, Mode=OneWay, Converter={StaticResource NegatingConverter}}" />
+          <MenuItem Header="{x:Static p:Resources.StopRecording}"
+                    Click="StopRecord_OnClick"
+                    IsEnabled="{Binding Recoding, Mode=OneWay}" />
+          <Separator Style="{StaticResource MenuSeparatorStyle}" />
+          <MenuItem Header="{x:Static p:Resources.Exit}" Click="MenuExit_Click" />
+        </ContextMenu>
+      </tb:TaskbarIcon.ContextMenu>
+    </tb:TaskbarIcon>
+  </Grid>
+
+</Window>

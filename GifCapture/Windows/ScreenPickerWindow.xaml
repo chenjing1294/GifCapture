@@ -1,0 +1,111 @@
+﻿<Window x:Class="GifCapture.Windows.ScreenPickerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:p="clr-namespace:GifCapture.Properties"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Topmost="True"
+        ResizeMode="NoResize"
+        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterScreen"
+        ShowInTaskbar="False"
+        x:Name="ThisWindow">
+  <Window.Resources>
+    <Style x:Key="ButtonStyle" TargetType="Button">
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border Background="{TemplateBinding Background}">
+              <ContentPresenter />
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Window.Resources>
+  <Window.InputBindings>
+    <KeyBinding Command="Close" Key="Escape" />
+  </Window.InputBindings>
+  <Window.CommandBindings>
+    <CommandBinding Command="Close" Executed="CloseClick" />
+  </Window.CommandBindings>
+  <Grid Background="#B7000000">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <Border Grid.Row="0" Padding="10,10,10,0">
+      <TextBlock Text="{x:Static p:Resources.SelectScreenTip}"
+                 Foreground="White"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center" />
+    </Border>
+    <ItemsControl Grid.Row="1"
+                  ItemsSource="{Binding ScreenPickerViewModels, ElementName=ThisWindow}"
+                  Margin="10">
+      <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+          <StackPanel Orientation="Horizontal" />
+        </ItemsPanelTemplate>
+      </ItemsControl.ItemsPanel>
+      <ItemsControl.ItemTemplate>
+        <DataTemplate>
+          <Border x:Name="Border"
+                  Width="{Binding Width}"
+                  Height="{Binding Height}"
+                  VerticalAlignment="Top"
+                  Margin="5 0"
+                  BorderThickness="2"
+                  SnapsToDevicePixels="True"
+                  BorderBrush="White">
+            <Button Background="{Binding Image}"
+                    Style="{StaticResource ButtonStyle}"
+                    Cursor="Hand"
+                    HorizontalContentAlignment="Stretch"
+                    Padding="0"
+                    Command="{Binding SelectScreenCommand, ElementName=ThisWindow}"
+                    CommandParameter="{Binding Screen}">
+              <Label Background="#B7000000"
+                     Foreground="White"
+                     Content="{Binding Screen.DeviceName}"
+                     VerticalAlignment="Center"
+                     HorizontalContentAlignment="Center"
+                     Margin="0,0,0,0" />
+            </Button>
+            <Border.Triggers>
+              <EventTrigger RoutedEvent="MouseEnter">
+                <EventTrigger.Actions>
+                  <BeginStoryboard>
+                    <Storyboard>
+                      <ColorAnimation Duration="0:0:0.1"
+                                      AutoReverse="False"
+                                      Storyboard.TargetName="Border"
+                                      Storyboard.TargetProperty="(Control.BorderBrush).(SolidColorBrush.Color)"
+                                      From="White"
+                                      To="Red" />
+                    </Storyboard>
+                  </BeginStoryboard>
+                </EventTrigger.Actions>
+              </EventTrigger>
+              <EventTrigger RoutedEvent="MouseLeave">
+                <EventTrigger.Actions>
+                  <BeginStoryboard>
+                    <Storyboard>
+                      <ColorAnimation Duration="0:0:0.1"
+                                      AutoReverse="False"
+                                      Storyboard.TargetName="Border"
+                                      Storyboard.TargetProperty="(Control.BorderBrush).(SolidColorBrush.Color)"
+                                      From="Red"
+                                      To="White" />
+                    </Storyboard>
+                  </BeginStoryboard>
+                </EventTrigger.Actions>
+              </EventTrigger>
+            </Border.Triggers>
+          </Border>
+        </DataTemplate>
+      </ItemsControl.ItemTemplate>
+    </ItemsControl>
+  </Grid>
+</Window>
