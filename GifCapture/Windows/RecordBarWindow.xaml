@@ -1,0 +1,42 @@
+﻿<Window x:Class="GifCapture.Windows.RecordBarWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:p="clr-namespace:GifCapture.Properties"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Topmost="True"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        Height="30"
+        Width="200">
+  <Border BorderBrush="White" BorderThickness="1" SnapsToDevicePixels="True" Background="#FFFF00"
+          MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown">
+    <Grid Margin="5 0">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="Auto" />
+      </Grid.ColumnDefinitions>
+      <TextBlock Grid.Column="0"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center">
+        <TextBlock.Text>
+          <MultiBinding StringFormat="{}{0} {1}s">
+            <Binding Source="{x:Static p:Resources.Recording}" Mode="OneWay" />
+            <Binding Path="ElapsedSeconds" Mode="OneWay" />
+          </MultiBinding>
+        </TextBlock.Text>
+      </TextBlock>
+      <Button Grid.Column="1"
+              x:Name="StopButton"
+              Click="StopButton_OnClick"
+              Foreground="Red"
+              FontFamily="{StaticResource Segoe}"
+              Style="{StaticResource IconButtonStyle}"
+              VerticalAlignment="Center"
+              Content="&#xe747;"
+              Background="#EEEEEE">
+      </Button>
+    </Grid>
+  </Border>
+</Window>

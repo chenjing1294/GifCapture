@@ -123,6 +123,15 @@ namespace GifCapture.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Recording:.
+        /// </summary>
+        public static string Recording {
+            get {
+                return ResourceManager.GetString("Recording", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Recording Saved:.
         /// </summary>
         public static string RecordingSaved {

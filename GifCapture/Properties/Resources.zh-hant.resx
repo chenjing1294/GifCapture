@@ -53,4 +53,7 @@
     <data name="RecordingSaved" xml:space="preserve">
         <value>錄屏已保存</value>
     </data>
+    <data name="Recording" xml:space="preserve">
+        <value>正在錄製：</value>
+    </data>
 </root>

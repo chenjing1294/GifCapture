@@ -25,10 +25,14 @@ namespace GifCapture.Windows
     {
         public static MainWindow Instance { get; private set; }
 
-        public MainWindow()
+        public MainWindow(bool showTaskbarIcon = true)
         {
             Instance = this;
             InitializeComponent();
+            if (!showTaskbarIcon)
+            {
+                TaskbarIcon.Visibility = Visibility.Hidden;
+            }
         }
 
 
@@ -94,7 +98,7 @@ namespace GifCapture.Windows
 
         private CancellationTokenSource _cts = null;
 
-        private async void GifWindow_OnClick(object sender, RoutedEventArgs e)
+        public async void GifWindow_OnClick(object sender, RoutedEventArgs e)
         {
             if (DataContext is MainViewModel mainViewModel)
             {
@@ -118,12 +122,42 @@ namespace GifCapture.Windows
                     string file = Path.Combine(desktop, $"{date}.gif");
                     _cts = new CancellationTokenSource();
                     mainViewModel.Recoding = true;
-                    await Task.Run(() => ToRecordFaster(rectangle, file, 1000 / mainViewModel.Fps, _cts.Token, mainViewModel));
+                    RecordBarWindow barWindow = new RecordBarWindow(mainViewModel, rectangle);
+                    barWindow.Show();
+                    await Task.Run(() => { ToRecordFaster(rectangle, file, 1000 / mainViewModel.Fps, _cts.Token, mainViewModel); });
                 }
             }
         }
 
-        private async void GifScreen_OnClick(object sender, RoutedEventArgs e)
+        public async void GifRegion_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is MainViewModel mainViewModel)
+            {
+                if (!mainViewModel.Recoding)
+                {
+                    if (_cts != null)
+                    {
+                        _cts.Cancel();
+                        _cts.Dispose();
+                    }
+
+
+                    Rectangle? rectangle = RegionPickerWindow.PickRegion();
+                    if (rectangle == null)
+                        return;
+                    string desktop = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                    string date = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
+                    string file = Path.Combine(desktop, $"{date}.gif");
+                    _cts = new CancellationTokenSource();
+                    mainViewModel.Recoding = true;
+                    RecordBarWindow barWindow = new RecordBarWindow(mainViewModel, rectangle.Value);
+                    barWindow.Show();
+                    await Task.Run(() => ToRecordFaster(rectangle.Value, file, 1000 / mainViewModel.Fps, _cts.Token, mainViewModel));
+                }
+            }
+        }
+
+        public async void GifScreen_OnClick(object sender, RoutedEventArgs e)
         {
             if (DataContext is MainViewModel mainViewModel)
             {
@@ -147,37 +181,12 @@ namespace GifCapture.Windows
                     string file = Path.Combine(desktop, $"{date}.gif");
                     _cts = new CancellationTokenSource();
                     mainViewModel.Recoding = true;
+                    RecordBarWindow barWindow = new RecordBarWindow(mainViewModel, rectangle);
+                    barWindow.Show();
                     await Task.Run(() => ToRecordFaster(rectangle, file, 1000 / mainViewModel.Fps, _cts.Token, mainViewModel));
                 }
             }
         }
-
-        private async void GifRegion_OnClick(object sender, RoutedEventArgs e)
-        {
-            if (DataContext is MainViewModel mainViewModel)
-            {
-                if (!mainViewModel.Recoding)
-                {
-                    if (_cts != null)
-                    {
-                        _cts.Cancel();
-                        _cts.Dispose();
-                    }
-
-
-                    Rectangle? rectangle = RegionPickerWindow.PickRegion();
-                    if (rectangle == null)
-                        return;
-                    string desktop = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-                    string date = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
-                    string file = Path.Combine(desktop, $"{date}.gif");
-                    _cts = new CancellationTokenSource();
-                    mainViewModel.Recoding = true;
-                    await Task.Run(() => ToRecordFaster(rectangle.Value, file, 1000 / mainViewModel.Fps, _cts.Token, mainViewModel));
-                }
-            }
-        }
-
 
         static void Sleep(int ms)
         {
@@ -353,7 +362,7 @@ namespace GifCapture.Windows
         }
 
 
-        private void StopRecord_OnClick(object sender, RoutedEventArgs e)
+        public void StopRecord_OnClick(object sender, RoutedEventArgs e)
         {
             if (DataContext is MainViewModel mainViewModel)
             {
@@ -391,7 +400,7 @@ namespace GifCapture.Windows
 
         private bool _toExit = false;
 
-        private void MenuExit_Click(object sender, RoutedEventArgs e)
+        public void MenuExit_Click(object sender, RoutedEventArgs e)
         {
             _toExit = true;
             Close();

@@ -60,4 +60,7 @@
     <data name="RecordingSaved" xml:space="preserve">
         <value>Recording Saved:</value>
     </data>
+    <data name="Recording" xml:space="preserve">
+        <value>Recording:</value>
+    </data>
 </root>

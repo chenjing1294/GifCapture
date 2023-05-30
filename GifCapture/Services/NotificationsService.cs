@@ -8,23 +8,30 @@ namespace GifCapture.Services
     {
         public static void Notice(string title, string subTitle, string imageUri = null, Dictionary<string, string> args = null)
         {
-            ToastContentBuilder builder = new ToastContentBuilder();
-            if (args != null)
+            try
             {
-                foreach (KeyValuePair<string, string> pair in args)
+                ToastContentBuilder builder = new ToastContentBuilder();
+                if (args != null)
                 {
-                    builder.AddArgument(pair.Key, pair.Value);
+                    foreach (KeyValuePair<string, string> pair in args)
+                    {
+                        builder.AddArgument(pair.Key, pair.Value);
+                    }
                 }
-            }
 
-            builder.AddText(title);
-            builder.AddText(subTitle);
-            if (!string.IsNullOrWhiteSpace(imageUri))
+                builder.AddText(title);
+                builder.AddText(subTitle);
+                if (!string.IsNullOrWhiteSpace(imageUri))
+                {
+                    builder.AddInlineImage(new Uri(imageUri));
+                }
+
+                builder.Show();
+            }
+            catch (Exception e)
             {
-                builder.AddInlineImage(new Uri(imageUri));
+                //ignore
             }
-
-            builder.Show();
         }
 
         public static void OpenFile(string fullNamePath)
