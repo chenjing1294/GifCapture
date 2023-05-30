@@ -247,7 +247,9 @@
         <Hyperlink NavigateUri="http://www.redisant.cn" Click="WebSiteHyperlink_OnClick">Redisant</Hyperlink>
       </TextBlock>
     </Border>
-    <tb:TaskbarIcon Grid.Row="3" IconSource="../Assets/Images/logo.ico"
+    <tb:TaskbarIcon x:Name="TaskbarIcon"
+                    Grid.Row="3"
+                    IconSource="../Assets/Images/logo.ico"
                     ToolTipText="GifCapture"
                     MenuActivation="RightClick"
                     TrayMouseDoubleClick="SystemTray_TrayMouseDoubleClick">

@@ -25,10 +25,14 @@ namespace GifCapture.Windows
     {
         public static MainWindow Instance { get; private set; }
 
-        public MainWindow()
+        public MainWindow(bool showTaskbarIcon = true)
         {
             Instance = this;
             InitializeComponent();
+            if (!showTaskbarIcon)
+            {
+                TaskbarIcon.Visibility = Visibility.Hidden;
+            }
         }
 
 
@@ -94,7 +98,7 @@ namespace GifCapture.Windows
 
         private CancellationTokenSource _cts = null;
 
-        private async void GifWindow_OnClick(object sender, RoutedEventArgs e)
+        public async void GifWindow_OnClick(object sender, RoutedEventArgs e)
         {
             if (DataContext is MainViewModel mainViewModel)
             {
@@ -123,7 +127,7 @@ namespace GifCapture.Windows
             }
         }
 
-        private async void GifScreen_OnClick(object sender, RoutedEventArgs e)
+        public async void GifScreen_OnClick(object sender, RoutedEventArgs e)
         {
             if (DataContext is MainViewModel mainViewModel)
             {
@@ -152,7 +156,7 @@ namespace GifCapture.Windows
             }
         }
 
-        private async void GifRegion_OnClick(object sender, RoutedEventArgs e)
+        public async void GifRegion_OnClick(object sender, RoutedEventArgs e)
         {
             if (DataContext is MainViewModel mainViewModel)
             {
@@ -353,7 +357,7 @@ namespace GifCapture.Windows
         }
 
 
-        private void StopRecord_OnClick(object sender, RoutedEventArgs e)
+        public void StopRecord_OnClick(object sender, RoutedEventArgs e)
         {
             if (DataContext is MainViewModel mainViewModel)
             {
@@ -391,7 +395,7 @@ namespace GifCapture.Windows
 
         private bool _toExit = false;
 
-        private void MenuExit_Click(object sender, RoutedEventArgs e)
+        public void MenuExit_Click(object sender, RoutedEventArgs e)
         {
             _toExit = true;
             Close();
