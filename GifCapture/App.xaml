@@ -4,5 +4,63 @@
              xmlns:local="clr-namespace:GifCapture"
              Startup="OnAppStartup">
   <Application.Resources>
+    <FontFamily x:Key="Segoe">pack://application:,,,/GifCapture;component/Assets/IconFonts/#Segoe MDL2 Assets</FontFamily>
+    <FontFamily x:Key="FontAwesome">pack://application:,,,/GifCapture;component/Assets/IconFonts/#Font Awesome 6 Pro</FontFamily>
+
+    <Style x:Key="IconButtonStyle" TargetType="{x:Type Button}">
+      <Setter Property="Foreground" Value="#2675BF" />
+      <Setter Property="FontSize" Value="14" />
+      <Setter Property="Padding" Value="4" />
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type Button}">
+            <Grid>
+              <Border x:Name="Border"
+                      CornerRadius="3"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
+                      SnapsToDevicePixels="True">
+                <TextBlock x:Name="TextBlock"
+                           Margin="{TemplateBinding Padding}"
+                           FontFamily="{TemplateBinding FontFamily}"
+                           Foreground="{TemplateBinding Foreground}"
+                           Text="{TemplateBinding Content}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           RenderTransformOrigin="0.5,0.5">
+                  <TextBlock.RenderTransform>
+                    <ScaleTransform />
+                  </TextBlock.RenderTransform>
+                </TextBlock>
+              </Border>
+            </Grid>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="Border" Property="Background" Value="#DFDFDF" />
+              </Trigger>
+              <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="TextBlock" Property="Foreground" Value="#DFDFDF" />
+              </Trigger>
+              <EventTrigger RoutedEvent="Button.Click">
+                <EventTrigger.Actions>
+                  <BeginStoryboard>
+                    <Storyboard>
+                      <DoubleAnimation Storyboard.TargetName="TextBlock"
+                                       Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                       From="1" To="0.6" Duration="0:0:0.1"
+                                       AutoReverse="True" />
+                      <DoubleAnimation Storyboard.TargetName="TextBlock"
+                                       Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                       From="1" To="0.6" Duration="0:0:0.1"
+                                       AutoReverse="True" />
+                    </Storyboard>
+                  </BeginStoryboard>
+                </EventTrigger.Actions>
+              </EventTrigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
   </Application.Resources>
 </Application>

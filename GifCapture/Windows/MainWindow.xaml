@@ -242,7 +242,7 @@
             Padding="10 2"
             Background="#E9EBEC">
       <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right">
-        Version <Hyperlink NavigateUri="https://github.com/chenjing1294/GifCapture" Click="GitHubHyperlink_OnClick">1.0.0</Hyperlink>,
+        Version <Hyperlink NavigateUri="https://github.com/chenjing1294/GifCapture" Click="GitHubHyperlink_OnClick">1.1.0</Hyperlink>,
         Developed by
         <Hyperlink NavigateUri="http://www.redisant.cn" Click="WebSiteHyperlink_OnClick">Redisant</Hyperlink>
       </TextBlock>

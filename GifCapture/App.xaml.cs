@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Globalization;
 using System.IO.Pipes;
 using System.Text;
 using System.Threading;
@@ -148,7 +146,6 @@ namespace GifCapture
 
         private void Pipe()
         {
-            Console.WriteLine("注册管道");
             //我们定义了一个Client的对象，.代表是当前计算机，以及和服务端一样的管道名称，同样定义为开启异步，以及是输入输出类型的。然后异步的去链接服务端
             _namedPipeClientStream = new NamedPipeClientStream(".", "RedisantToolBoxPipe", PipeDirection.InOut);
             //链接服务端
@@ -173,7 +170,6 @@ namespace GifCapture
                 }
 
                 string action = Encoding.UTF8.GetString(_receivedData);
-                Console.WriteLine($"接收到服务端消息: {read}:{action}");
                 if (action.Equals("stop")) //停止捕获
                 {
                     Dispatcher.Invoke(() => _mainWindow.StopRecord_OnClick(null, null));
