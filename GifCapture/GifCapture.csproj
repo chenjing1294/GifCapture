@@ -45,7 +45,7 @@
         <Resource Include="Assets\Images\录制屏幕.png" />
         <Resource Include="Assets\Images\录制窗口.png" />
         <Resource Include="Assets\Images\stop.png" />
-        <Resource Include="Assets\IconFonts\Font Awesome 6 Pro-Light-300.otf" />
+        <!--<Resource Include="Assets\IconFonts\Font Awesome 6 Pro-Light-300.otf" />-->
         <Resource Include="Assets\IconFonts\Segoe MDL2 Assets.ttf" />
     </ItemGroup>
     <ItemGroup>

@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
+using GifCapture.Models;
 using GifCapture.ViewModels;
 
 namespace GifCapture.Windows
@@ -16,8 +17,8 @@ namespace GifCapture.Windows
             this.DataContext = mainViewModel;
             InitializeComponent();
             Rectangle screen = SystemInformation.VirtualScreen;
-            int left = rectangle.X + rectangle.Width / 2 - _width / 2;
-            int top = rectangle.Y + rectangle.Height + 10;
+            int left = (int) ((rectangle.X + rectangle.Width / 2) / Dpi.X - _width / 2);
+            int top = (int) ((rectangle.Y + rectangle.Height) / Dpi.Y + 10);
             if (top > screen.Height - _height)
             {
                 top = screen.Height - _height;

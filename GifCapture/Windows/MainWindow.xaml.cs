@@ -96,6 +96,7 @@ namespace GifCapture.Windows
 
         #region 录屏
 
+        private RecordBarWindow _barWindow = null;
         private CancellationTokenSource _cts = null;
 
         public async void GifWindow_OnClick(object sender, RoutedEventArgs e)
@@ -122,8 +123,9 @@ namespace GifCapture.Windows
                     string file = Path.Combine(desktop, $"{date}.gif");
                     _cts = new CancellationTokenSource();
                     mainViewModel.Recoding = true;
-                    RecordBarWindow barWindow = new RecordBarWindow(mainViewModel, rectangle);
-                    barWindow.Show();
+                    _barWindow?.Close();
+                    _barWindow = new RecordBarWindow(mainViewModel, rectangle);
+                    _barWindow.Show();
                     await Task.Run(() => { ToRecordFaster(rectangle, file, 1000 / mainViewModel.Fps, _cts.Token, mainViewModel); });
                 }
             }
@@ -150,8 +152,9 @@ namespace GifCapture.Windows
                     string file = Path.Combine(desktop, $"{date}.gif");
                     _cts = new CancellationTokenSource();
                     mainViewModel.Recoding = true;
-                    RecordBarWindow barWindow = new RecordBarWindow(mainViewModel, rectangle.Value);
-                    barWindow.Show();
+                    _barWindow?.Close();
+                    _barWindow = new RecordBarWindow(mainViewModel, rectangle.Value);
+                    _barWindow.Show();
                     await Task.Run(() => ToRecordFaster(rectangle.Value, file, 1000 / mainViewModel.Fps, _cts.Token, mainViewModel));
                 }
             }
@@ -181,8 +184,9 @@ namespace GifCapture.Windows
                     string file = Path.Combine(desktop, $"{date}.gif");
                     _cts = new CancellationTokenSource();
                     mainViewModel.Recoding = true;
-                    RecordBarWindow barWindow = new RecordBarWindow(mainViewModel, rectangle);
-                    barWindow.Show();
+                    _barWindow?.Close();
+                    _barWindow = new RecordBarWindow(mainViewModel, rectangle);
+                    _barWindow.Show();
                     await Task.Run(() => ToRecordFaster(rectangle, file, 1000 / mainViewModel.Fps, _cts.Token, mainViewModel));
                 }
             }
@@ -371,6 +375,8 @@ namespace GifCapture.Windows
                     _cts.Cancel();
                     _cts.Dispose();
                     _cts = null;
+                    _barWindow?.Close();
+                    _barWindow = null;
                 }
             }
         }

@@ -5,7 +5,7 @@
              Startup="OnAppStartup">
   <Application.Resources>
     <FontFamily x:Key="Segoe">pack://application:,,,/GifCapture;component/Assets/IconFonts/#Segoe MDL2 Assets</FontFamily>
-    <FontFamily x:Key="FontAwesome">pack://application:,,,/GifCapture;component/Assets/IconFonts/#Font Awesome 6 Pro</FontFamily>
+    <!-- <FontFamily x:Key="FontAwesome">pack://application:,,,/GifCapture;component/Assets/IconFonts/#Font Awesome 6 Pro</FontFamily> -->
 
     <Style x:Key="IconButtonStyle" TargetType="{x:Type Button}">
       <Setter Property="Foreground" Value="#2675BF" />
