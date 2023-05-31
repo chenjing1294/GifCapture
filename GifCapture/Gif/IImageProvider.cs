@@ -12,7 +12,7 @@ namespace GifCapture.Gif
         /// <summary>
         /// Capture an image.
         /// </summary>
-        Bitmap Capture();
+        Bitmap Capture(bool includeCursor = false);
 
         /// <summary>
         /// Height of Captured image.

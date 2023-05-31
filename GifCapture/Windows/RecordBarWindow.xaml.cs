@@ -19,14 +19,14 @@ namespace GifCapture.Windows
             Rectangle screen = SystemInformation.VirtualScreen;
             int left = (int) ((rectangle.X + rectangle.Width / 2) / Dpi.X - _width / 2);
             int top = (int) ((rectangle.Y + rectangle.Height) / Dpi.Y + 10);
-            if (top > screen.Height - _height)
+            if (top > screen.Height / Dpi.Y - _height)
             {
-                top = screen.Height - _height;
+                top = (int) (screen.Height / Dpi.Y - _height);
             }
 
-            if (left > screen.Width - _width)
+            if (left > screen.Width / Dpi.X - _width)
             {
-                left = screen.Width / 2 - _width / 2;
+                left = (int) (screen.Width / 2 / Dpi.X - _width / 2);
             }
 
             this.Top = top;

@@ -30,7 +30,7 @@ namespace GifCapture.Controls
 
         public void UpdatePositionTextBlock(Point point, Size size)
         {
-            PositionTextBlock.Text = $"X,Y={point.X},{point.Y} WxH={size.Width}x{size.Height}";
+            PositionTextBlock.Text = $"X,Y={point.X},{point.Y} WxH={(int) size.Width}x{(int) size.Height}";
         }
 
         public void HideRectangle()

@@ -19,5 +19,13 @@
             get => _elapsedSeconds;
             set => Set(ref _elapsedSeconds, value);
         }
+
+        private bool _includeCursor = false;
+
+        public bool IncludeCursor
+        {
+            get => _includeCursor;
+            set => Set(ref _includeCursor, value);
+        }
     }
 }

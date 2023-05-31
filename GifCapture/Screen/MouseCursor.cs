@@ -33,7 +33,14 @@ namespace GifCapture.Screen
             {
                 using (bmp)
                 {
+                    SolidBrush solidBrush = new SolidBrush(Color.FromArgb(200, 191, 222, 179));
+                    Pen pen = new Pen(Color.Red);
+                    int width = bmp.Size.Width + 5;
+                    g.FillEllipse(solidBrush, location.X - width / 2, location.Y - width / 2, width, width);
+                    g.DrawEllipse(pen, location.X - width / 2, location.Y - width / 2, width, width);
                     g.DrawImage(bmp, new Rectangle(location, bmp.Size));
+                    solidBrush.Dispose();
+                    pen.Dispose();
                 }
             }
             catch (ArgumentException)
@@ -62,9 +69,9 @@ namespace GifCapture.Screen
             }
         }
 
-        static IntPtr GetIcon(Func<Point, Point> Transform, out Point Location)
+        static IntPtr GetIcon(Func<Point, Point> transform, out Point location)
         {
-            Location = Point.Empty;
+            location = Point.Empty;
 
             var cursorInfo = new CursorInfo {cbSize = Marshal.SizeOf<CursorInfo>()};
 
@@ -84,11 +91,10 @@ namespace GifCapture.Screen
 
             var hotspot = new Point(icInfo.xHotspot, icInfo.yHotspot);
 
-            Location = new Point(cursorInfo.ptScreenPos.X - hotspot.X,
-                cursorInfo.ptScreenPos.Y - hotspot.Y);
+            location = new Point(cursorInfo.ptScreenPos.X - hotspot.X, cursorInfo.ptScreenPos.Y - hotspot.Y);
 
-            if (Transform != null)
-                Location = Transform(Location);
+            if (transform != null)
+                location = transform(location);
 
             Gdi32.DeleteObject(icInfo.hbmColor);
             Gdi32.DeleteObject(icInfo.hbmMask);

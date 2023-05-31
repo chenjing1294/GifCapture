@@ -40,37 +40,46 @@ namespace GifCapture.Windows
 
         private async void CaptureWindow_OnClick(object sender, RoutedEventArgs e)
         {
-            IWindow window = VideoSourcePickerWindow.PickWindow();
-            if (window != null)
+            if (DataContext is MainViewModel mainViewModel)
             {
-                var platformServices = ServiceProvider.IPlatformServices;
-                IBitmapImage bitmapImage = window.Handle == platformServices.DesktopWindow.Handle
-                    ? ScreenShot.Capture(false)
-                    : ScreenShot.Capture(window.Rectangle, false);
-
-                if (bitmapImage != null)
+                IWindow window = VideoSourcePickerWindow.PickWindow();
+                if (window != null)
                 {
-                    await SaveScreenShotAsync(bitmapImage);
+                    var platformServices = ServiceProvider.IPlatformServices;
+                    IBitmapImage bitmapImage = window.Handle == platformServices.DesktopWindow.Handle
+                        ? ScreenShot.Capture(false)
+                        : ScreenShot.Capture(window.Rectangle, mainViewModel.IncludeCursor);
+
+                    if (bitmapImage != null)
+                    {
+                        await SaveScreenShotAsync(bitmapImage);
+                    }
                 }
             }
         }
 
         private async void CaptureRegion_OnClick(object sender, RoutedEventArgs e)
         {
-            Rectangle? region = RegionPickerWindow.PickRegion();
-            if (region != null)
+            if (DataContext is MainViewModel mainViewModel)
             {
-                await SaveScreenShotAsync(ScreenShot.Capture(region.Value));
+                Rectangle? region = RegionPickerWindow.PickRegion();
+                if (region != null)
+                {
+                    await SaveScreenShotAsync(ScreenShot.Capture(region.Value, mainViewModel.IncludeCursor));
+                }
             }
         }
 
         private async void CaptureScreen_OnClick(object sender, RoutedEventArgs e)
         {
-            IScreen screen = ScreenPickerWindow.PickScreen();
-            if (screen != null)
+            if (DataContext is MainViewModel mainViewModel)
             {
-                IBitmapImage img = ScreenShot.Capture(screen.Rectangle);
-                await SaveScreenShotAsync(img);
+                IScreen screen = ScreenPickerWindow.PickScreen();
+                if (screen != null)
+                {
+                    IBitmapImage img = ScreenShot.Capture(screen.Rectangle, mainViewModel.IncludeCursor);
+                    await SaveScreenShotAsync(img);
+                }
             }
         }
 
@@ -249,7 +258,7 @@ namespace GifCapture.Windows
                         }
 
                         prev = curr;
-                        Bitmap img = provider.Capture();
+                        Bitmap img = provider.Capture(mainViewModel.IncludeCursor);
 
                         bitmaps.Add(new GifFrame()
                         {
@@ -344,7 +353,7 @@ namespace GifCapture.Windows
                             }
 
                             prev = curr;
-                            Bitmap img = provider.Capture();
+                            Bitmap img = provider.Capture(mainViewModel.IncludeCursor);
 
                             Debug.WriteLine($"DELAY={DELAY},delay={delay}ms");
                             gifCreator.AddFrame(img, delay: delay, quality: GifQuality.Bit8);

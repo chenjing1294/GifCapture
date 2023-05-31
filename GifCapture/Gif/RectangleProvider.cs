@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using GifCapture.Native;
+using GifCapture.Screen;
 
 namespace GifCapture.Gif
 {
@@ -38,10 +39,20 @@ namespace GifCapture.Gif
             }
         }
 
-        public Bitmap Capture()
+        public Bitmap Capture(bool includeCursor = false)
         {
             OnCapture();
             Bitmap img = _dcTarget.GetBitmap();
+            using (var g = Graphics.FromImage(img))
+            {
+                if (includeCursor)
+                {
+                    MouseCursor.Draw(g, p => new Point(p.X - _rectangle.X, p.Y - _rectangle.Y));
+                }
+
+                g.Flush();
+            }
+
             return img;
         }
 
