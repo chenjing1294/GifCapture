@@ -12,7 +12,7 @@ GifCapture can capture an area of your desktop and save it directly to .GIF
 - Record the specified window
 - In a multi-monitor environment, record the specified screen
 
-<a href="https://www.microsoft.com/store/apps/9PM0SRDVB8GX"><img src="./microsoft.svg" height="58" width="180" alt="get from microsoft store"></a>
+<a href="https://www.microsoft.com/store/productId/9NLD1KTJWXH4"><img src="./microsoft.svg" height="58" width="180" alt="get from microsoft store"></a>
 
 ![](./gifcapture.gif)
 
