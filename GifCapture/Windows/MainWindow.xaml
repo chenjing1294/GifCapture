@@ -144,14 +144,8 @@
       </Setter>
     </Style>
   </Window.Resources>
-  <Grid>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="Auto" />
-      <RowDefinition Height="Auto" />
-      <RowDefinition Height="Auto" />
-      <RowDefinition Height="0" />
-    </Grid.RowDefinitions>
-    <Border Grid.Row="0" BorderThickness="0" SnapsToDevicePixels="True" Background="White">
+  <StackPanel>
+    <Border BorderThickness="0" SnapsToDevicePixels="True" Background="White">
       <StackPanel Orientation="Horizontal" Margin="10 10 10 0">
         <Button Style="{StaticResource ButtonStyle1}"
                 Click="CaptureWindow_OnClick">
@@ -210,7 +204,24 @@
         </Button>
       </StackPanel>
     </Border>
-    <Border Grid.Row="1" Background="#EEEEEE" SnapsToDevicePixels="True"
+    <Border BorderThickness="0 1 0 0" BorderBrush="#B9B9B9" SnapsToDevicePixels="True"
+            Padding="10 4">
+      <StackPanel Orientation="Horizontal">
+        <TextBlock Text="{x:Static p:Resources.Delay}"
+                   VerticalAlignment="Center">
+        </TextBlock>
+        <ComboBox VerticalAlignment="Center"
+                  SelectedIndex="{Binding DelayIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+          <ComboBoxItem>0 s</ComboBoxItem>
+          <ComboBoxItem>2 s</ComboBoxItem>
+          <ComboBoxItem>4 s</ComboBoxItem>
+          <ComboBoxItem>6 s</ComboBoxItem>
+          <ComboBoxItem>8 s</ComboBoxItem>
+        </ComboBox>
+      </StackPanel>
+
+    </Border>
+    <Border Background="#EEEEEE" SnapsToDevicePixels="True"
             BorderThickness="0 1 0 0"
             BorderBrush="#B9B9B9"
             Visibility="{Binding Recoding, Mode=OneWay, Converter={StaticResource VisibilityConverter}}">
@@ -238,7 +249,7 @@
         </Button>
       </Grid>
     </Border>
-    <Border Grid.Row="2" BorderBrush="#B9B9B9" BorderThickness="0 1 0 0" SnapsToDevicePixels="True"
+    <Border BorderBrush="#B9B9B9" BorderThickness="0 1 0 0" SnapsToDevicePixels="True"
             Padding="10 2"
             Background="#E9EBEC">
       <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right">
@@ -326,6 +337,6 @@
         </ContextMenu>
       </tb:TaskbarIcon.ContextMenu>
     </tb:TaskbarIcon>
-  </Grid>
+  </StackPanel>
 
 </Window>

@@ -36,12 +36,34 @@ namespace GifCapture.Windows
         }
 
 
+        private async Task DelayAsync(int delayIndex)
+        {
+            switch (delayIndex)
+            {
+                case 0:
+                    return;
+                case 1:
+                    await Task.Delay(2 * 1000);
+                    break;
+                case 2:
+                    await Task.Delay(4 * 1000);
+                    break;
+                case 3:
+                    await Task.Delay(6 * 1000);
+                    break;
+                case 4:
+                    await Task.Delay(8 * 1000);
+                    break;
+            }
+        }
+
         #region 截图
 
         private async void CaptureWindow_OnClick(object sender, RoutedEventArgs e)
         {
             if (DataContext is MainViewModel mainViewModel)
             {
+                await DelayAsync(mainViewModel.DelayIndex);
                 IWindow window = VideoSourcePickerWindow.PickWindow();
                 if (window != null)
                 {
@@ -62,6 +84,7 @@ namespace GifCapture.Windows
         {
             if (DataContext is MainViewModel mainViewModel)
             {
+                await DelayAsync(mainViewModel.DelayIndex);
                 Rectangle? region = RegionPickerWindow.PickRegion();
                 if (region != null)
                 {
@@ -74,6 +97,7 @@ namespace GifCapture.Windows
         {
             if (DataContext is MainViewModel mainViewModel)
             {
+                await DelayAsync(mainViewModel.DelayIndex);
                 IScreen screen = ScreenPickerWindow.PickScreen();
                 if (screen != null)
                 {
@@ -120,6 +144,7 @@ namespace GifCapture.Windows
                         _cts.Dispose();
                     }
 
+                    await DelayAsync(mainViewModel.DelayIndex);
                     IWindow target = VideoSourcePickerWindow.PickWindow();
                     if (target == null)
                     {
@@ -152,7 +177,7 @@ namespace GifCapture.Windows
                         _cts.Dispose();
                     }
 
-
+                    await DelayAsync(mainViewModel.DelayIndex);
                     Rectangle? rectangle = RegionPickerWindow.PickRegion();
                     if (rectangle == null)
                         return;
@@ -181,6 +206,7 @@ namespace GifCapture.Windows
                         _cts.Dispose();
                     }
 
+                    await DelayAsync(mainViewModel.DelayIndex);
                     IScreen target = ScreenPickerWindow.PickScreen();
                     if (target == null)
                     {

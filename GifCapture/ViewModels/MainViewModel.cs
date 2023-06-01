@@ -27,5 +27,13 @@
             get => _includeCursor;
             set => Set(ref _includeCursor, value);
         }
+
+        private int _delayIndex = 0;
+
+        public int DelayIndex
+        {
+            get => _delayIndex;
+            set => Set(ref _delayIndex, value);
+        }
     }
 }

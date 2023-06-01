@@ -63,4 +63,7 @@
     <data name="Recording" xml:space="preserve">
         <value>Recording:</value>
     </data>
+    <data name="Delay" xml:space="preserve">
+        <value>Delay:</value>
+    </data>
 </root>

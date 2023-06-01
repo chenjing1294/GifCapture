@@ -56,4 +56,7 @@
     <data name="Recording" xml:space="preserve">
         <value>正在录制：</value>
     </data>
+    <data name="Delay" xml:space="preserve">
+        <value>延迟：</value>
+    </data>
 </root>

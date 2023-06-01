@@ -87,6 +87,15 @@ namespace GifCapture.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delay:.
+        /// </summary>
+        public static string Delay {
+            get {
+                return ResourceManager.GetString("Delay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exit.
         /// </summary>
         public static string Exit {
