@@ -87,6 +87,15 @@ namespace GifCapture.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contains Mouse.
+        /// </summary>
+        public static string ContainsMouse {
+            get {
+                return ResourceManager.GetString("ContainsMouse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delay:.
         /// </summary>
         public static string Delay {

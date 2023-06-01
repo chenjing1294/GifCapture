@@ -218,6 +218,10 @@
           <ComboBoxItem>6 s</ComboBoxItem>
           <ComboBoxItem>8 s</ComboBoxItem>
         </ComboBox>
+        <CheckBox Content="{x:Static p:Resources.ContainsMouse}"
+                  IsChecked="{Binding IncludeCursor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  Margin="10 0 0 0"
+                  VerticalAlignment="Center" />
       </StackPanel>
 
     </Border>
@@ -253,7 +257,7 @@
             Padding="10 2"
             Background="#E9EBEC">
       <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right">
-        Version <Hyperlink NavigateUri="https://github.com/chenjing1294/GifCapture" Click="GitHubHyperlink_OnClick">1.1.1</Hyperlink>,
+        Version <Hyperlink NavigateUri="https://github.com/chenjing1294/GifCapture" Click="GitHubHyperlink_OnClick">1.3.0</Hyperlink>,
         Developed by
         <Hyperlink NavigateUri="http://www.redisant.cn" Click="WebSiteHyperlink_OnClick">Redisant</Hyperlink>
       </TextBlock>

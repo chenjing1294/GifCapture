@@ -59,4 +59,7 @@
     <data name="Delay" xml:space="preserve">
         <value>延迟：</value>
     </data>
+    <data name="ContainsMouse" xml:space="preserve">
+        <value>包含鼠标</value>
+    </data>
 </root>

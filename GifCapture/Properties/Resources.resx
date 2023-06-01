@@ -66,4 +66,7 @@
     <data name="Delay" xml:space="preserve">
         <value>Delay:</value>
     </data>
+    <data name="ContainsMouse" xml:space="preserve">
+        <value>Contains Mouse</value>
+    </data>
 </root>
