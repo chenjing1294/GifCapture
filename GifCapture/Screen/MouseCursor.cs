@@ -33,13 +33,13 @@ namespace GifCapture.Screen
             {
                 using (bmp)
                 {
-                    SolidBrush solidBrush = new SolidBrush(Color.FromArgb(200, 191, 222, 179));
+                    // SolidBrush solidBrush = new SolidBrush(Color.FromArgb(200, 191, 222, 179));
                     Pen pen = new Pen(Color.Red);
-                    int width = bmp.Size.Width + 5;
-                    g.FillEllipse(solidBrush, location.X - width / 2, location.Y - width / 2, width, width);
-                    g.DrawEllipse(pen, location.X - width / 2, location.Y - width / 2, width, width);
+                    int width = 32;
+                    // g.FillEllipse(solidBrush, location.X - width, location.Y - width, width * 2, width * 2);
+                    g.DrawEllipse(pen, location.X - width, location.Y - width, width * 2, width * 2);
                     g.DrawImage(bmp, new Rectangle(location, bmp.Size));
-                    solidBrush.Dispose();
+                    // solidBrush.Dispose();
                     pen.Dispose();
                 }
             }
@@ -57,6 +57,13 @@ namespace GifCapture.Screen
 
             try
             {
+                // Select DC_PEN so you can change the color of the pen with COLORREF SetDCPenColor(HDC hdc, COLORREF color)
+                Gdi32.SelectObject(deviceContext, Gdi32.GetStockObject(StockObjects.DC_PEN));
+                Gdi32.SelectObject(deviceContext, Gdi32.GetStockObject(StockObjects.NULL_BRUSH));
+                // Gdi32.SetDCBrushColor(deviceContext, 0x0000FF00); // 0x00bbggrr
+                Gdi32.SetDCPenColor(deviceContext, 0x000000FF);
+                int width = 32;
+                Gdi32.Ellipse(deviceContext, location.X - width, location.Y - width, location.X + width, location.Y + width);
                 User32.DrawIconEx(deviceContext,
                     location.X, location.Y,
                     hIcon,

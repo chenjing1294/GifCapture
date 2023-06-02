@@ -35,24 +35,14 @@ namespace GifCapture.Gif
 
             if (_includeCursor)
             {
-                //TODO
+                MouseCursor.Draw(hdcDest, p => new Point(p.X - _rectangle.X, p.Y - _rectangle.Y));
             }
         }
 
-        public Bitmap Capture(bool includeCursor = false)
+        public Bitmap Capture()
         {
             OnCapture();
             Bitmap img = _dcTarget.GetBitmap();
-            using (var g = Graphics.FromImage(img))
-            {
-                if (includeCursor)
-                {
-                    MouseCursor.Draw(g, p => new Point(p.X - _rectangle.X, p.Y - _rectangle.Y));
-                }
-
-                g.Flush();
-            }
-
             return img;
         }
 

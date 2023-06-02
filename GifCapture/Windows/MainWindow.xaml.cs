@@ -265,7 +265,7 @@ namespace GifCapture.Windows
                 int delay = DELAY;
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
-                using (RectangleProvider provider = new RectangleProvider(rectangle))
+                using (RectangleProvider provider = new RectangleProvider(rectangle, mainViewModel.IncludeCursor))
                 {
                     TimeSpan prev = sw.Elapsed;
                     while (!ct.IsCancellationRequested)
@@ -284,7 +284,7 @@ namespace GifCapture.Windows
                         }
 
                         prev = curr;
-                        Bitmap img = provider.Capture(mainViewModel.IncludeCursor);
+                        Bitmap img = provider.Capture();
 
                         bitmaps.Add(new GifFrame()
                         {
@@ -360,7 +360,7 @@ namespace GifCapture.Windows
                 sw.Start();
                 using (var gifCreator = AnimatedGif.AnimatedGif.Create(gifPath, DELAY))
                 {
-                    using (var provider = new RectangleProvider(rectangle))
+                    using (var provider = new RectangleProvider(rectangle, mainViewModel.IncludeCursor))
                     {
                         TimeSpan prev = sw.Elapsed;
                         while (!ct.IsCancellationRequested)
@@ -379,8 +379,7 @@ namespace GifCapture.Windows
                             }
 
                             prev = curr;
-                            Bitmap img = provider.Capture(mainViewModel.IncludeCursor);
-
+                            Bitmap img = provider.Capture();
                             Debug.WriteLine($"DELAY={DELAY},delay={delay}ms");
                             gifCreator.AddFrame(img, delay: delay, quality: GifQuality.Bit8);
                             img.Dispose();
