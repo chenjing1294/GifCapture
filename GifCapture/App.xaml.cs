@@ -13,10 +13,27 @@ namespace GifCapture
 {
     public partial class App : Application
     {
+        private bool _registered = false;
+
         protected override void OnStartup(StartupEventArgs e)
         {
+            #region terminate if there's any existing instance
+
+            Mutex procMutex = new System.Threading.Mutex(true, "_REDISANT_TOOLBOX", out bool result);
+            if (!result)
+            {
+                Application.Current.Shutdown(0);
+                return;
+            }
+
+            procMutex.ReleaseMutex();
+
+            #endregion
+
+
             RegisterEvents();
             // Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en");
+
             // click on the notification tip
             ToastNotificationManagerCompat.OnActivated += toastArgs =>
             {
@@ -36,14 +53,18 @@ namespace GifCapture
                     }
                 });
             };
+            _registered = true;
             base.OnStartup(e);
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
             base.OnExit(e);
-            //unload notifications
-            ToastNotificationManagerCompat.Uninstall();
+            if (_registered)
+            {
+                //unload notifications
+                ToastNotificationManagerCompat.Uninstall();
+            }
         }
 
         #region 异常处理
