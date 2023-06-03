@@ -1,0 +1,53 @@
+﻿<Window x:Class="GifCapture.Net.Windows.RegionPickerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:GifCapture.Net.Controls"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Topmost="True"
+        ResizeMode="NoResize"
+        Cursor="Cross"
+        ShowInTaskbar="False">
+  <Window.InputBindings>
+    <KeyBinding Command="Close" Key="Escape" />
+  </Window.InputBindings>
+  <Window.CommandBindings>
+    <CommandBinding Command="Close" Executed="CloseClick" />
+  </Window.CommandBindings>
+  <Grid>
+    <Grid x:Name="RootGrid"
+          RenderOptions.BitmapScalingMode="NearestNeighbor"
+          Background="Azure"
+          MouseMove="WindowMouseMove"
+          MouseLeftButtonDown="WindowMouseLeftButtonDown"
+          MouseLeftButtonUp="WindowMouseLeftButtonUp">
+      <Image Name="BgImg" />
+
+      <!-- 鼠标框选的区域 -->
+      <controls:StripedBorder x:Name="StripedBorder"
+                              Visibility="Collapsed"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Top" />
+
+      <!-- 鼠标框选区域的上下左右四个部分 -->
+      <controls:PuncturedRegion x:Name="PuncturedRegion" />
+
+      <TextBlock x:Name="SizeTextBlock"
+                 Visibility="Collapsed"
+                 Padding="10,4"
+                 FontSize="14"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Foreground="White"
+                 Background="CornflowerBlue" />
+    </Grid>
+
+    <controls:Magnifier x:Name="Magnifier"
+                        MouseMove="Magnifier_OnMouseMove"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Target="{Binding ElementName=RootGrid, Mode=OneWay}" />
+  </Grid>
+
+</Window>

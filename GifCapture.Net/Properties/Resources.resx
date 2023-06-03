@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="WebSite" xml:space="preserve">
+        <value>http://www.redisant.com/gif</value>
+    </data>
+    <data name="CaptureWindow" xml:space="preserve">
+        <value>Capture Window</value>
+    </data>
+    <data name="CaptureRegion" xml:space="preserve">
+        <value>Capture Region</value>
+    </data>
+    <data name="CaptureScreen" xml:space="preserve">
+        <value>Capture Screen</value>
+    </data>
+    <data name="RecordeWindow" xml:space="preserve">
+        <value>Recorde Window</value>
+    </data>
+    <data name="RecordeRegion" xml:space="preserve">
+        <value>Recorde Region</value>
+    </data>
+    <data name="RecordeScreen" xml:space="preserve">
+        <value>Recorde Screen</value>
+    </data>
+    <data name="StopRecording" xml:space="preserve">
+        <value>Stop Recording</value>
+    </data>
+    <data name="Exit" xml:space="preserve">
+        <value>Exit</value>
+    </data>
+    <data name="SelectWindowTip" xml:space="preserve">
+        <value>Select the window to capture, or press Esc to exit</value>
+    </data>
+    <data name="SelectScreenTip" xml:space="preserve">
+        <value>Select the screen to capture, or press Esc to cancel</value>
+    </data>
+    <data name="ScreenshotSaved" xml:space="preserve">
+        <value>Screenshot Saved</value>
+    </data>
+    <data name="SavedPath" xml:space="preserve">
+        <value>Saved Path:</value>
+    </data>
+    <data name="RecordingSaved" xml:space="preserve">
+        <value>Recording Saved:</value>
+    </data>
+    <data name="Recording" xml:space="preserve">
+        <value>Recording:</value>
+    </data>
+    <data name="Delay" xml:space="preserve">
+        <value>Delay:</value>
+    </data>
+    <data name="ContainsMouse" xml:space="preserve">
+        <value>Contains Mouse</value>
+    </data>
+</root>
