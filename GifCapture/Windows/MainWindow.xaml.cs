@@ -23,11 +23,14 @@ namespace GifCapture.Windows
 {
     public partial class MainWindow : Window
     {
+        public MainViewModel MainViewModel;
         public static MainWindow Instance { get; private set; }
 
         public MainWindow(bool showTaskbarIcon = true)
         {
             Instance = this;
+            MainViewModel = new MainViewModel();
+            this.DataContext = MainViewModel;
             InitializeComponent();
             if (!showTaskbarIcon)
             {

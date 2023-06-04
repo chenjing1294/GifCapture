@@ -10,9 +10,6 @@
         ResizeMode="CanMinimize"
         Title="GifCapture"
         Icon="../Assets/Images/logo.ico">
-  <Window.DataContext>
-    <vm:MainViewModel />
-  </Window.DataContext>
   <Window.Resources>
     <converters:NegatingConverter x:Key="NegatingConverter" />
     <converters:VisibilityConverter x:Key="VisibilityConverter" />
@@ -257,7 +254,7 @@
             Padding="10 2"
             Background="#E9EBEC">
       <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right">
-        Version <Hyperlink NavigateUri="https://github.com/chenjing1294/GifCapture" Click="GitHubHyperlink_OnClick">1.3.0</Hyperlink>,
+        Version <Hyperlink NavigateUri="https://github.com/chenjing1294/GifCapture" Click="GitHubHyperlink_OnClick">1.4.0</Hyperlink>,
         Developed by
         <Hyperlink NavigateUri="http://www.redisant.cn" Click="WebSiteHyperlink_OnClick">Redisant</Hyperlink>
       </TextBlock>

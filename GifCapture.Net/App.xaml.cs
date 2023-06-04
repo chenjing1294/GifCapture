@@ -6,7 +6,7 @@ using Windows.Foundation.Collections;
 using GifCapture.Services;
 using Microsoft.Toolkit.Uwp.Notifications;
 
-namespace GifCapture.Net
+namespace GifCapture
 {
     public partial class App : Application
     {
@@ -16,7 +16,7 @@ namespace GifCapture.Net
         {
             #region terminate if there's any existing instance
 
-            Mutex procMutex = new System.Threading.Mutex(true, "_REDISANT_TOOLBOX", out bool result);
+            Mutex procMutex = new System.Threading.Mutex(true, "_GIF_CAPTURE", out bool result);
             if (!result)
             {
                 Application.Current.Shutdown(0);

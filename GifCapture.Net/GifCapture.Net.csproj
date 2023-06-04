@@ -3,6 +3,7 @@
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
         <TargetFramework>net7.0-windows10.0.17763.0</TargetFramework>
+        <ApplicationIcon>Assets\Images\logo.ico</ApplicationIcon>
         <Nullable>enable</Nullable>
         <AssemblyName>GifCapture</AssemblyName>
         <RootNamespace>GifCapture</RootNamespace>

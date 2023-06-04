@@ -19,7 +19,7 @@ namespace GifCapture
         {
             #region terminate if there's any existing instance
 
-            Mutex procMutex = new System.Threading.Mutex(true, "_REDISANT_TOOLBOX", out bool result);
+            Mutex procMutex = new System.Threading.Mutex(true, "_GIF_CAPTURE", out bool result);
             if (!result)
             {
                 Application.Current.Shutdown(0);
@@ -195,16 +195,43 @@ namespace GifCapture
                 {
                     Dispatcher.Invoke(() => _mainWindow.StopRecord_OnClick(null, null));
                 }
-                else if (action.Equals("4___")) //捕获窗口
+                else if (action.StartsWith("4")) //捕获窗口
                 {
+                    if (action.Equals("41__")) //包含鼠标
+                    {
+                        _mainWindow.MainViewModel.IncludeCursor = true;
+                    }
+                    else
+                    {
+                        _mainWindow.MainViewModel.IncludeCursor = false;
+                    }
+
                     Dispatcher.Invoke(() => _mainWindow.GifWindow_OnClick(null, null));
                 }
-                else if (action.Equals("5___")) //捕获区域
+                else if (action.StartsWith("5")) //捕获区域
                 {
+                    if (action.Equals("51__"))
+                    {
+                        _mainWindow.MainViewModel.IncludeCursor = true;
+                    }
+                    else
+                    {
+                        _mainWindow.MainViewModel.IncludeCursor = false;
+                    }
+
                     Dispatcher.Invoke(() => _mainWindow.GifRegion_OnClick(null, null));
                 }
-                else if (action.Equals("6___")) //捕获屏幕
+                else if (action.StartsWith("6")) //捕获屏幕
                 {
+                    if (action.Equals("61__"))
+                    {
+                        _mainWindow.MainViewModel.IncludeCursor = true;
+                    }
+                    else
+                    {
+                        _mainWindow.MainViewModel.IncludeCursor = false;
+                    }
+
                     Dispatcher.Invoke(() => _mainWindow.GifScreen_OnClick(null, null));
                 }
             }
