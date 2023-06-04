@@ -10,6 +10,7 @@
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <RootNamespace>GifCapture</RootNamespace>
+        <Platforms>AnyCPU;x64</Platforms>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)'=='Release'">

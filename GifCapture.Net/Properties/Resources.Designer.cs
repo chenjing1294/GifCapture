@@ -87,6 +87,24 @@ namespace GifCapture.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 16 colors.
+        /// </summary>
+        public static string ColorNumber16 {
+            get {
+                return ResourceManager.GetString("ColorNumber16", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 256 colors.
+        /// </summary>
+        public static string ColorNumber256 {
+            get {
+                return ResourceManager.GetString("ColorNumber256", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contains Mouse.
         /// </summary>
         public static string ContainsMouse {
@@ -96,7 +114,7 @@ namespace GifCapture.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delay:.
+        ///   Looks up a localized string similar to Delay: .
         /// </summary>
         public static string Delay {
             get {
@@ -110,6 +128,15 @@ namespace GifCapture.Properties {
         public static string Exit {
             get {
                 return ResourceManager.GetString("Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quality: .
+        /// </summary>
+        public static string Quality {
+            get {
+                return ResourceManager.GetString("Quality", resourceCulture);
             }
         }
         
@@ -150,7 +177,7 @@ namespace GifCapture.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Recording Saved:.
+        ///   Looks up a localized string similar to Recording Saved: .
         /// </summary>
         public static string RecordingSaved {
             get {
@@ -159,7 +186,7 @@ namespace GifCapture.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Saved Path:.
+        ///   Looks up a localized string similar to Saved Path: .
         /// </summary>
         public static string SavedPath {
             get {

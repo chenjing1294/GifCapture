@@ -5,6 +5,7 @@
         <!--<ImplicitUsings>enable</ImplicitUsings>-->
         <!--<Nullable>enable</Nullable>-->
         <TieredPGO>true</TieredPGO>
+        <Platforms>AnyCPU;x64</Platforms>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)'=='Release'">
         <DebugType>none</DebugType>

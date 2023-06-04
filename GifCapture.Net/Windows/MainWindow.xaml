@@ -219,14 +219,14 @@
           <ComboBoxItem>8 s</ComboBoxItem>
         </ComboBox>
 
-        <TextBlock Text="图像质量："
+        <TextBlock Text="{x:Static p:Resources.Quality}"
                    Margin="10 0 0 0"
                    VerticalAlignment="Center">
         </TextBlock>
         <ComboBox VerticalAlignment="Center"
                   SelectedIndex="{Binding Quality, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-          <ComboBoxItem>256 色</ComboBoxItem>
-          <ComboBoxItem>16 色</ComboBoxItem>
+          <ComboBoxItem Content="{x:Static p:Resources.ColorNumber256}" />
+          <ComboBoxItem Content="{x:Static p:Resources.ColorNumber16}" />
         </ComboBox>
 
         <CheckBox Content="{x:Static p:Resources.ContainsMouse}"

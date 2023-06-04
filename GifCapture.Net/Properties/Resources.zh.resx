@@ -62,4 +62,13 @@
     <data name="ContainsMouse" xml:space="preserve">
         <value>包含鼠标</value>
     </data>
+    <data name="ColorNumber256" xml:space="preserve">
+        <value>256 色</value>
+    </data>
+    <data name="ColorNumber16" xml:space="preserve">
+        <value>16 色</value>
+    </data>
+    <data name="Quality" xml:space="preserve">
+        <value>图像质量：</value>
+    </data>
 </root>

@@ -14,6 +14,7 @@
         <SelfContained>false</SelfContained>
         <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
         <PublishReadyToRun>true</PublishReadyToRun>
+        <Platforms>AnyCPU;x64</Platforms>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)'=='Release'">
@@ -23,22 +24,22 @@
     </PropertyGroup>
     
     <ItemGroup>
-        <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.3"/>
-        <PackageReference Include="ReactiveProperty" Version="6.1.3"/>
-        <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0"/>
+        <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.3" />
+        <PackageReference Include="ReactiveProperty" Version="6.1.3" />
+        <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
     </ItemGroup>
     <ItemGroup>
-        <Resource Include="Assets\Images\logo.ico"/>
-        <Resource Include="Assets\Images\camera.png"/>
-        <Resource Include="Assets\Images\截取区域.png"/>
-        <Resource Include="Assets\Images\截取屏幕.png"/>
-        <Resource Include="Assets\Images\截取窗口.png"/>
-        <Resource Include="Assets\Images\录制区域.png"/>
-        <Resource Include="Assets\Images\录制屏幕.png"/>
-        <Resource Include="Assets\Images\录制窗口.png"/>
-        <Resource Include="Assets\Images\stop.png"/>
+        <Resource Include="Assets\Images\logo.ico" />
+        <Resource Include="Assets\Images\camera.png" />
+        <Resource Include="Assets\Images\截取区域.png" />
+        <Resource Include="Assets\Images\截取屏幕.png" />
+        <Resource Include="Assets\Images\截取窗口.png" />
+        <Resource Include="Assets\Images\录制区域.png" />
+        <Resource Include="Assets\Images\录制屏幕.png" />
+        <Resource Include="Assets\Images\录制窗口.png" />
+        <Resource Include="Assets\Images\stop.png" />
         <!--<Resource Include="Assets\IconFonts\Font Awesome 6 Pro-Light-300.otf" />-->
-        <Resource Include="Assets\IconFonts\Segoe MDL2 Assets.ttf"/>
+        <Resource Include="Assets\IconFonts\Segoe MDL2 Assets.ttf" />
     </ItemGroup>
     <ItemGroup>
         <Page Update="Windows\MainWindow.xaml">
@@ -61,6 +62,6 @@
         </Compile>
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\AnimatedGif\AnimatedGif.csproj"/>
+        <ProjectReference Include="..\AnimatedGif\AnimatedGif.csproj" />
     </ItemGroup>
 </Project>

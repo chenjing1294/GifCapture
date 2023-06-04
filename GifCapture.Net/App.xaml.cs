@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -28,7 +29,7 @@ namespace GifCapture
             #endregion
 
             RegisterEvents();
-
+            // Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en");
             // click on the notification tip
             ToastNotificationManagerCompat.OnActivated += toastArgs =>
             {

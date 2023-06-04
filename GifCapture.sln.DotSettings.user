@@ -4,8 +4,9 @@
   &lt;Assembly Path="C:\Users\chenjing\.nuget\packages\animatedgif\1.0.5\lib\netstandard2.0\AnimatedGif.dll" /&gt;&#xD;
 &lt;/AssemblyExplorer&gt;</s:String>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=GifCapture_002ENet_002FProperties_002FResources/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=GifCapture_002FProperties_002FResources/@EntryIndexedValue">True</s:Boolean>
+	
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/Initialized/@EntryValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=3a405a4f_002Da9ed_002D47bc_002D869c_002D3538977fbe3b_0023AppStoreInstaller/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=e1b321cc_002D6819_002D4810_002Dbe3b_002D33d6b9e569d5_0023GifCapture/@EntryIndexedValue">True</s:Boolean>
 	
 	</wpf:ResourceDictionary>

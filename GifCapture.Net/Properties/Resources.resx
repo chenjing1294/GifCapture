@@ -55,18 +55,27 @@
         <value>Screenshot Saved</value>
     </data>
     <data name="SavedPath" xml:space="preserve">
-        <value>Saved Path:</value>
+        <value>Saved Path: </value>
     </data>
     <data name="RecordingSaved" xml:space="preserve">
-        <value>Recording Saved:</value>
+        <value>Recording Saved: </value>
     </data>
     <data name="Recording" xml:space="preserve">
         <value>Recording:</value>
     </data>
     <data name="Delay" xml:space="preserve">
-        <value>Delay:</value>
+        <value>Delay: </value>
     </data>
     <data name="ContainsMouse" xml:space="preserve">
         <value>Contains Mouse</value>
+    </data>
+    <data name="ColorNumber256" xml:space="preserve">
+        <value>256 colors</value>
+    </data>
+    <data name="ColorNumber16" xml:space="preserve">
+        <value>16 colors</value>
+    </data>
+    <data name="Quality" xml:space="preserve">
+        <value>Quality: </value>
     </data>
 </root>
