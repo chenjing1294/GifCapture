@@ -9,7 +9,7 @@ using GifCapture.ViewModels;
 using Reactive.Bindings;
 using Window = System.Windows.Window;
 
-namespace GifCapture.Net.Windows
+namespace GifCapture.Windows
 {
     public partial class ScreenPickerWindow : Window
     {

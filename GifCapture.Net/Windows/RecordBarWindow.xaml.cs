@@ -5,7 +5,7 @@ using System.Windows.Input;
 using GifCapture.Models;
 using GifCapture.ViewModels;
 
-namespace GifCapture.Net.Windows
+namespace GifCapture.Windows
 {
     public partial class RecordBarWindow : Window
     {

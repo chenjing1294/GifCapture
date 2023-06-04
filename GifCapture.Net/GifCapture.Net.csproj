@@ -4,6 +4,8 @@
         <OutputType>WinExe</OutputType>
         <TargetFramework>net7.0-windows10.0.17763.0</TargetFramework>
         <Nullable>enable</Nullable>
+        <AssemblyName>GifCapture</AssemblyName>
+        <RootNamespace>GifCapture</RootNamespace>
         <UseWPF>true</UseWPF>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <TieredPGO>true</TieredPGO>

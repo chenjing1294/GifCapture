@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using GifCapture.Base;
 
-namespace GifCapture.Net.Controls
+namespace GifCapture.Controls
 {
     public partial class PuncturedRegion : UserControl
     {

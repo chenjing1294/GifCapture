@@ -17,7 +17,7 @@ using GifCapture.Services;
 using Color = System.Windows.Media.Color;
 using Window = System.Windows.Window;
 
-namespace GifCapture.Net.Windows
+namespace GifCapture.Windows
 {
     public partial class VideoSourcePickerWindow : Window
     {

@@ -19,7 +19,7 @@ using GifCapture.ViewModels;
 using Rectangle = System.Drawing.Rectangle;
 using Window = System.Windows.Window;
 
-namespace GifCapture.Net.Windows
+namespace GifCapture.Windows
 {
     public partial class MainWindow : Window
     {
@@ -318,7 +318,7 @@ namespace GifCapture.Net.Windows
 
                         if (frame != null)
                         {
-                            Console.WriteLine($"DELAY={DELAY},delay={frame.Delay}ms");
+                            Debug.WriteLine($"DELAY={DELAY},delay={frame.Delay}ms");
                             gifCreator.AddFrame(frame.Bitmap, delay: frame.Delay, quality: mainViewModel.Quality == 0 ? GifQuality.Bit8 : GifQuality.Bit4);
                             // gifCreator.AddFrame(frame.Bitmap, delay: frame.Delay);
                             frame.Bitmap.Dispose();
@@ -380,7 +380,7 @@ namespace GifCapture.Net.Windows
 
                             prev = curr;
                             Bitmap img = provider.Capture();
-                            Console.WriteLine($"DELAY={DELAY},delay={delay}ms");
+                            Debug.WriteLine($"DELAY={DELAY},delay={delay}ms");
                             gifCreator.AddFrame(img, delay: delay, quality: mainViewModel.Quality == 0 ? GifQuality.Bit8 : GifQuality.Bit4);
                             img.Dispose();
                             Dispatcher.Invoke(() => { mainViewModel.ElapsedSeconds = (int) sw.Elapsed.TotalSeconds; });

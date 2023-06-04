@@ -1,4 +1,4 @@
-﻿<Window x:Class="GifCapture.Net.Windows.VideoSourcePickerWindow"
+﻿<Window x:Class="GifCapture.Windows.VideoSourcePickerWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         WindowStyle="None"

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace GifCapture.Net.Controls
+namespace GifCapture.Controls
 {
     public partial class StripedBorder : UserControl
     {

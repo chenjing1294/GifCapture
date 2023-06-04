@@ -8,7 +8,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using GifCapture.Base;
-using GifCapture.Net.Controls;
+using GifCapture.Controls;
 using GifCapture.Images;
 using GifCapture.Models;
 using GifCapture.Screen;
@@ -16,7 +16,7 @@ using GifCapture.Services;
 using Point = System.Windows.Point;
 using Window = System.Windows.Window;
 
-namespace GifCapture.Net.Windows
+namespace GifCapture.Windows
 {
     public partial class RegionPickerWindow : Window
     {

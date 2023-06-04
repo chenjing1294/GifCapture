@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="Windows/MainWindow.xaml">
   <Application.Resources>
-    <FontFamily x:Key="Segoe">pack://application:,,,/GifCapture.Net;component/Assets/IconFonts/#Segoe MDL2 Assets</FontFamily>
+    <FontFamily x:Key="Segoe">pack://application:,,,/Assets/IconFonts/#Segoe MDL2 Assets</FontFamily>
     <!-- <FontFamily x:Key="FontAwesome">pack://application:,,,/GifCapture.Net;component/Assets/IconFonts/#Font Awesome 6 Pro</FontFamily> -->
 
     <Style x:Key="IconButtonStyle" TargetType="{x:Type Button}">
