@@ -448,12 +448,22 @@ namespace GifCapture.Windows
 
         private void GitHubHyperlink_OnClick(object sender, RoutedEventArgs e)
         {
-            Process.Start(new ProcessStartInfo(@"https://github.com/chenjing1294/GifCapture"));
+            Process process = new Process();
+            process.StartInfo = new ProcessStartInfo(@"https://github.com/chenjing1294/GifCapture")
+            {
+                UseShellExecute = true
+            };
+            process.Start();
         }
 
         private void WebSiteHyperlink_OnClick(object sender, RoutedEventArgs e)
         {
-            Process.Start(new ProcessStartInfo(Properties.Resources.WebSite));
+            Process process = new Process();
+            process.StartInfo = new ProcessStartInfo(Properties.Resources.WebSite)
+            {
+                UseShellExecute = true
+            };
+            process.Start();
         }
     }
 }
