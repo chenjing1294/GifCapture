@@ -17,15 +17,6 @@ GifCapture can capture an area of your desktop and save it directly to .GIF
 ![](./gifcapture.gif)
 
 
-
-## 捐助
-
-感谢您的捐助，将有助于软件的后续开发，捐款将用于硬件、软件、服务器托管等费用。
-
-再次感谢您的支持！
-
-![](./donate.jpg)
-
 ## Donate
 
 Thank you for your donation, it will help the subsequent development, donations will be used for hardware, software, server hosting and other expenses.
